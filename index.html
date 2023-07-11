@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <title>JIL JIL JU</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <button class="box" id="one-one"></button>
+      <button class="box" id="one-two"></button>
+      <button class="box" id="one-three"></button>
+      <button class="box" id="two-one"></button>
+      <button class="box" id="two-two"></button>
+      <button class="box" id="two-three"></button>
+      <button class="box" id="three-one"></button>
+      <button class="box" id="three-two"></button>
+      <button class="box" id="three-three"></button>
+    </div>
+    <br />
+    <div>
+      <button id="reset" onclick="reset()">RESET</button>
+    </div>
+
+    <script>
+      process();
+      setInterval(process, 1000);
+      let curr = "x";
+      let fl = 0;
+      let count = 0;
+
+      var box = document.getElementsByClassName("box");
+
+      for (let i = 0; i < box.length; i++) {
+        box[i].addEventListener("click", function () {
+          if (this.innerHTML != "x" && this.innerHTML != "o") {
+            if (fl == 0) {
+              this.innerHTML = curr;
+              count += 1;
+              curr = curr == "x" ? "o" : "x";
+            }
+          } else {
+            window.alert("ERROR");
+          }
+        });
+      }
+
+      function mark(a, b, c) {
+        x = document.getElementById(a);
+        y = document.getElementById(b);
+        z = document.getElementById(c);
+
+        x.setAttribute("style", "color: red; font-size: 110px;");
+
+        y.setAttribute("style", "color: red; font-size: 110px;");
+
+        z.setAttribute("style", "color: red; font-size: 110px;");
+      }
+
+      function process() {
+        if (
+          items[0].innerHTML == items[1].innerHTML &&
+          items[1].innerHTML == items[2].innerHTML
+        ) {
+          if (items[0].innerHTML == "x") {
+            mark("one-one", "one-two", "one-three");
+            fl = 1;
+            return;
+          } else if (items[0].innerHTML == "o") {
+            mark("one-one", "one-two", "one-three");
+            fl = 2;
+            return;
+          }
+        } else if (
+          items[3].innerHTML == items[4].innerHTML &&
+          items[4].innerHTML == items[5].innerHTML
+        ) {
+          if (items[3].innerHTML == "x") {
+            mark("two-one", "two-two", "two-three");
+            fl = 1;
+            return;
+          } else if (items[3].innerHTML == "o") {
+            mark("two-one", "two-two", "two-three");
+            fl = 2;
+            return;
+          }
+        } else if (
+          items[6].innerHTML == items[7].innerHTML &&
+          items[7].innerHTML == items[8].innerHTML
+        ) {
+          if (items[6].innerHTML == "x") {
+            mark("three-one", "three-two", "three-three");
+            fl = 1;
+            return;
+          } else if (items[6].innerHTML == "o") {
+            mark("three-one", "three-two", "three-three");
+            fl = 2;
+            return;
+          }
+        } else if (
+          items[0].innerHTML == items[4].innerHTML &&
+          items[4].innerHTML == items[8].innerHTML
+        ) {
+          if (items[0].innerHTML == "x") {
+            mark("one-one", "two-two", "three-three");
+            fl = 1;
+            return;
+          } else if (items[0].innerHTML == "o") {
+            mark("one-one", "two-two", "three-three");
+            fl = 2;
+            return;
+          }
+        } else if (
+          items[2].innerHTML == items[4].innerHTML &&
+          items[4].innerHTML == items[6].innerHTML
+        ) {
+          if (items[2].innerHTML == "x") {
+            mark("one-three", "two-two", "three-one");
+            fl = 1;
+            return;
+          } else if (items[2].innerHTML == "o") {
+            mark("one-three", "two-two", "three-one");
+            fl = 2;
+            return;
+          }
+        } else if (
+          items[0].innerHTML == items[3].innerHTML &&
+          items[3].innerHTML == items[6].innerHTML
+        ) {
+          if (items[0].innerHTML == "x") {
+            mark("one-one", "two-one", "three-one");
+            fl = 1;
+            return;
+          } else if (items[0].innerHTML == "o") {
+            mark("one-one", "two-one", "three-one");
+            fl = 2;
+            return;
+          }
+        } else if (
+          items[1].innerHTML == items[4].innerHTML &&
+          items[4].innerHTML == items[7].innerHTML
+        ) {
+          if (items[1].innerHTML == "x") {
+            mark("one-two", "two-two", "three-two");
+            fl = 1;
+            return;
+          } else if (items[1].innerHTML == "o") {
+            mark("one-two", "two-two", "three-two");
+            fl = 2;
+            return;
+          }
+        } else if (
+          items[2].innerHTML == items[5].innerHTML &&
+          items[5].innerHTML == items[8].innerHTML
+        ) {
+          if (items[2].innerHTML == "x") {
+            mark("one-three", "two-three", "three-three");
+            fl = 1;
+            return;
+          } else if (items[2].innerHTML == "o") {
+            mark("one-three", "two-three", "three-three");
+            fl = 2;
+            return;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
